@@ -64,18 +64,19 @@ export class UsersService{
     */
     
     //2. Note: You can indicate the fields to be returned
-    /*
+    
     async findAll(): Promise<User[]> {
-        return await this.userRepository.find({select: ["code", "name"]});
-    }*/
+        return await this.userRepository.find();
+    }
 
     //3. For relations, you can specify relations to be included in return
     /**
      * find all and return only code and name along with profile relation
-     */
+     
     async findAll(): Promise<User[]> {
         return await this.userRepository.find({select: ["firstName", "lastName","id"], relations: ["profile"]});
     }
+    */
     
     //4. Etc. See https://typeorm.io/#/find-options
 
@@ -93,9 +94,15 @@ export class UsersService{
      * @param id 
      * Finds by a criterion (id in this case) and deletes. Returns void
      */
+    /* FindOneParams not working well. Using ParseIntPipe
     async delete(id: FindOneParams): Promise<void> {
         await this.userRepository.delete(id);
     }
+    */
+   async delete(id: number): Promise<void> {
+    await this.userRepository.delete(id);
+}
+
 
     /**
      * 
@@ -113,10 +120,15 @@ export class UsersService{
      * @param user 
      * Find by the id and replace the fields sent in Dto
      */
-    
+
+    /* FindOneParams not working well.Using ParseIntPipe
     async update1(id: FindOneParams, user: UpdateUserDto): Promise<UpdateResult> {
         return await this.userRepository.update(id, { ...user})
     }
+    */
+   async update1(id: number, user: UpdateUserDto): Promise<UpdateResult> {
+    return await this.userRepository.update(id, { ...user})
+}
 
     /**
      * 

@@ -7,7 +7,7 @@ export class CreateUserDto extends CreateBaseAbstractDto{
     readonly firstName: string
 
     @IsNotEmpty()
-    readonly middelName: string
+    readonly middleName: string
 
     @IsNotEmpty()
     readonly lastName: string
@@ -24,7 +24,7 @@ export class CreateUserDto extends CreateBaseAbstractDto{
 
     @IsEmail()
     readonly primaryEmailAddress: string
-    
+
     readonly profile: CreateProfileDto
     /*readonly isPrimaryEmailAddressVerified: boolean
     readonly passwordSalt:string
