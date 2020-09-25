@@ -4,5 +4,5 @@ export class CreateProfileDto extends CreateBaseAbstractDto{
     readonly homeAddress: string
     readonly Nationality: string
     readonly stateOfOrigin: string
-    readonly photo: string//photo id
+    //readonly photo: string//photo id
 }

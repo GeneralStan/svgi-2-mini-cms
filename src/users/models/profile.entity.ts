@@ -14,11 +14,11 @@ export class Profile extends BaseAbstractEntity{
     @Column()
     stateOfOrigin: string
 
-    @Column()
+    @Column({nullable:true})
     photo:string//photo
     
     @JoinColumn()
-    @OneToOne(type => User, user => user.profile)
+    @OneToOne(type => User, user => user.profile, {onDelete: 'CASCADE'})
     user: User
 
 }
