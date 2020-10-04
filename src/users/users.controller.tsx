@@ -102,6 +102,7 @@ export class UsersController {
         Just using below string as an illustration placeholder for now. The real value will be 
         when we implement Authentication and Authorization.
         The token will contain whatever data you want to pass but in base64 digest format.
+        For example, UserInfo, Roles, ThemeContext values, etc.
         */
         const initialProps = { jwtToken: "put-the-token-string-here-if-any" };
 

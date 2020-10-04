@@ -18,7 +18,11 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "css-build": "node-sass --omit-source-map-url src/bulma/sass/**/ -o src/bulma/css/**/",
+    "minify": "gulp",
+    "css": "npm run css-build && npm run minify",
+    "copy-bulma-extension-js-to-public": "copyfiles -u 5 node_modules/**/bulma-accordion/dist/js/*.min.js node_modules/**/bulma-carousel/dist/js/*.min.js node_modules/**/bulma-calendar/dist/js/*.min.js public/js"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
@@ -33,6 +37,12 @@
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
     "bulma": "^0.9.1",
+    "bulma-extensions": "^6.2.7",
+    "copyfiles": "^2.3.0",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-rename": "^2.0.0",
+    "node-sass": "^4.14.1",
     "class-transformer": "^0.3.1",
     "class-validator": "^0.12.2",
     "fastify": "^3.4.1",
