@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-
+import {UsersWithCount} from 'src/global/custom.interfaces';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, UpdateResult } from 'typeorm';
 import { CreateUserDto } from './dto/create/create-user.dto';
@@ -65,9 +65,15 @@ export class UsersService{
     
     //2. Note: You can indicate the fields to be returned
     
-    async findAll(): Promise<User[]> {
-        return await this.userRepository.find();
+    async findAllWithOptions(findOptions:string): Promise<UsersWithCount> {
+        const[users, count] = await
+    this.userRepository.findAndCount(JSON.parse(findOptions));
+        return{users, count};
     }
+    async findAll():Promise<UsersWithCount>{
+        const[users,count] =await this.userRepository.findAndCount();
+    return{users, count} 
+   }
 
     //3. For relations, you can specify relations to be included in return
     /**

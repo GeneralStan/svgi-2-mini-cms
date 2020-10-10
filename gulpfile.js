@@ -25,7 +25,7 @@ const minifyCSS = () => {
           }
         }
         ))
-      .pipe(gulp.dest(paths.styles.dest));
+      .pipe(gulp.dest(paths.styles.dest)); 
 };
 
 exports.default = minifyCSS
